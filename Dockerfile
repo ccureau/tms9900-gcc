@@ -27,6 +27,9 @@ RUN bash \
   && pushd $GCC_VERSION && patch -p1 </tmp/patch/gcc-4.4.0-tms9900-1.19.patch && popd \
   && tar zxf ../downloads/$MPFR_VERSION.tar.gz && mv $MPFR_VERSION /tmp/build/$GCC_VERSION/mpfr \
   && tar zxf ../downloads/$GMP_VERSION.tar.gz && mv $GMP_VERSION /tmp/build/$GCC_VERSION/gmp \
+  && mkdir elf2ea5 && tar zxf /tmp/patch/elf2ea5.tar.gz -C elf2ea5 \
+  && mkdir elf2cart && tar zxf /tmp/patch/elf2cart.tar.gz -C elf2cart \
+  && unzip /tmp/patch/ea5split.zip \ 
   && rm -v /tmp/downloads/* /tmp/patch/* \
   &&  mkdir /tmp/build/binutils-obj && cd /tmp/build/binutils-obj \
   && ../$BINUTILS_VERSION/configure --prefix=$PREFIX --target=$TARGET --disable-build-warnings \
@@ -39,4 +42,7 @@ RUN bash \
   && cd /tmp/build/gcc-obj \
   && make all-target-libgcc \
   && make install-target-libgcc \
+  && cd /tmp/build/elf2ea5 && ls && make && mv elf2ea5 $PREFIX/bin/ \
+  && cd /tmp/build/elf2cart && ls && make && mv elf2cart $PREFIX/bin/ \
+  && cd /tmp/build/ea5split && ls && make && mv ea5split $PREFIX/bin/ \
   && rm -rf /tmp/build /tmp/downloads
