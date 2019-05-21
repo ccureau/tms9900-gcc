@@ -40,9 +40,10 @@ First, set up a directory tree to use for this image.  I used $HOME/ti
     export TI99_DIR=$HOME/ti99
    
 Unpack and build libti99. The important bits to note here are:
- - -e sets the variables that libti99 needs to build properly
- - -v maps your TI99_DIR to /src inside of the container
- - -w sets the working directory to /src in the container when the container starts
+
+*-e* sets the variables that libti99 needs to build properly
+*-v* maps your TI99_DIR to /src inside of the container
+*-w* sets the working directory to /src in the container when the container starts
 
 
     git clone https://github.com/tursilion/libti99.git $TI99_DIR
