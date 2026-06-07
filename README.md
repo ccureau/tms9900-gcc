@@ -1,3 +1,5 @@
+## This project has been archived. Please see [Bill Kuker's tms9900-gcc container](https://github.com/bkuker/tms9900-gcc) for a much improved version. 
+
 # tms9900-gcc
 
 Dockerized GCC cross compiler built for the TI TMS9900 (TI99/4A family and others)
